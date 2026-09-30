@@ -1,0 +1,5 @@
+<resources>
+    <!-- Content is rendered entirely with Jetpack Compose; this base theme only
+         controls the window background shown before Compose takes over. -->
+    <style name="Theme.VibeMemory" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
