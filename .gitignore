@@ -32,3 +32,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Rust build artifacts (JNI bridge crate)
+rust/**/target/

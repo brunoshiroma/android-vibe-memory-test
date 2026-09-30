@@ -1,0 +1,16 @@
+# Linker configuration for cross-compiling to Android targets with the NDK.
+# ANDROID_NDK_HOME must point at an installed NDK; the rust-android-gradle
+# plugin sets these automatically when building from Gradle. When building
+# manually, set ANDROID_NDK_HOME and add the NDK's prebuilt bin directory
+# (containing the "<target>21-clang" wrappers) to PATH first.
+[target.aarch64-linux-android]
+linker = "aarch64-linux-android26-clang"
+
+[target.armv7-linux-androideabi]
+linker = "armv7a-linux-androideabi26-clang"
+
+[target.i686-linux-android]
+linker = "i686-linux-android26-clang"
+
+[target.x86_64-linux-android]
+linker = "x86_64-linux-android26-clang"

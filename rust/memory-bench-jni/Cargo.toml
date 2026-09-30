@@ -1,0 +1,15 @@
+[package]
+name = "memory-bench-jni"
+version = "0.1.0"
+edition = "2021"
+description = "JNI bridge exposing the memory-cache-bench Rust benchmark to the Android app"
+publish = false
+
+[lib]
+# cdylib is loaded by the Android app through System.loadLibrary(); rlib keeps
+# `cargo test` working on the host without needing a JVM.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+jni = "0.21"
+memory-cache-bench = { git = "https://github.com/brunoshiroma/rust-vibe-memory-test" }
