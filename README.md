@@ -50,6 +50,16 @@ cd rust/memory-bench-jni
 cargo test
 ```
 
+## Releases
+
+Pushing a tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) triggers the
+[`release.yml`](.github/workflows/release.yml) workflow, which builds one APK
+per ABI — `arm64` (`arm64-v8a`), `arm` (`armeabi-v7a`), `x86`, and `x64`
+(`x86_64`) — via `./gradlew assembleRelease` and uploads them as assets on the
+GitHub Release created for that tag. The `release` build type is signed with
+the debug key (no dedicated release keystore is configured), so the APKs are
+ready to sideload directly.
+
 ## Tests
 
 - `rust/memory-bench-jni`: `cargo test` covers JSON serialization of the

@@ -24,10 +24,27 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            // No dedicated release keystore is configured for this sideload-only
+            // benchmark app, so release APKs are signed with the debug key. This
+            // keeps `./gradlew assembleRelease` (used by the tag release workflow)
+            // producing installable APKs without requiring secrets.
+            signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+        }
+    }
+
+    // Produces one APK per ABI (instead of a single fat APK bundling all four
+    // native library sets) so the release workflow can publish arm64, arm,
+    // x86, and x64 builds separately.
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+            isUniversalApk = false
         }
     }
 
