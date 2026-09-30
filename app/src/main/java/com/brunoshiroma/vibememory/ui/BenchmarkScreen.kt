@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
@@ -50,6 +50,7 @@ fun BenchmarkScreen(viewModel: BenchmarkViewModel) {
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(16.dp),
         ) {
             Text("Tamanhos a testar", style = MaterialTheme.typography.titleMedium)
@@ -176,17 +177,15 @@ private fun UnitDropdown(
 
 @Composable
 private fun ResultsTable(results: List<Measurement>) {
-    LazyColumn {
-        item {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                HeaderCell("Operação", 1.4f)
-                HeaderCell("Tamanho", 1f)
-                HeaderCell("GB/s", 0.8f)
-                HeaderCell("ns/elem", 0.8f)
-            }
-            HorizontalDivider()
+    Column {
+        Row(modifier = Modifier.fillMaxWidth()) {
+            HeaderCell("Operação", 1.4f)
+            HeaderCell("Tamanho", 1f)
+            HeaderCell("GB/s", 0.8f)
+            HeaderCell("ns/elem", 0.8f)
         }
-        items(results) { measurement ->
+        HorizontalDivider()
+        results.forEach { measurement ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
