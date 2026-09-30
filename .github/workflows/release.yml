@@ -51,7 +51,7 @@ jobs:
       - name: Build per-ABI release APKs
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon
+          ./gradlew assembleRelease -PappVersion="${GITHUB_REF_NAME}" --no-daemon
 
       - name: Collect APKs
         run: |

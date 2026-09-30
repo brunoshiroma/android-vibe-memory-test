@@ -58,7 +58,8 @@ per ABI — `arm64` (`arm64-v8a`), `arm` (`armeabi-v7a`), `x86`, and `x64`
 (`x86_64`) — via `./gradlew assembleRelease` and uploads them as assets on the
 GitHub Release created for that tag. The `release` build type is signed with
 the debug key (no dedicated release keystore is configured), so the APKs are
-ready to sideload directly.
+ready to sideload directly. The Android app version name in each release APK is
+set to the tag; local builds default to `1.0`.
 
 ## Tests
 
