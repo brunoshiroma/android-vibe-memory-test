@@ -103,7 +103,7 @@ dependencies = [
 [[package]]
 name = "memory-cache-bench"
 version = "0.1.0"
-source = "git+https://github.com/brunoshiroma/rust-vibe-memory-test#e54db443105d908d56ef3619ec322758f98579a4"
+source = "git+https://github.com/brunoshiroma/rust-vibe-memory-test?tag=v0.1.3#34e6be3a725d57c836261366aa1ac8a80ec9c7a5"
 dependencies = [
  "wasm-bindgen",
 ]
